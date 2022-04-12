@@ -1,6 +1,6 @@
 # ReproductorMP3-Java-Swing
 
-<img src='Screenshop/pantalla.png'>
+<img src='Screenshop/pantalla.png'/>
 
 
 ## Reproductor de MP3 en Java 8 Proyecto de Clase.
