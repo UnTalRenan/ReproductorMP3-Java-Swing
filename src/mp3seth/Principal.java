@@ -30,6 +30,7 @@ public class Principal extends JFrame implements BasicPlayerListener, ActionList
 //https://www.youtube.com/user/Renan6x3
     String ruta_conf="src/data.txt";
     String ruta_conf_color="src/viscolor.txt";
+    String ruta_listas_de_reproduccion="src/Listas/";
     Archivo a=new Archivo();
     public void actionPerformed(ActionEvent evt)
     {
@@ -43,7 +44,7 @@ public class Principal extends JFrame implements BasicPlayerListener, ActionList
             int r = JOptionPane.showConfirmDialog(null, (new StringBuilder()).append("Esta seguro que eliminara la lista ").append(listas.getSelectedItem().toString()).toString());
             if(r == 1)
                 return;
-            File fichero = new File((new StringBuilder()).append("Listas/").append(listas.getSelectedItem().toString()).toString());
+            File fichero = new File((new StringBuilder()).append(ruta_listas_de_reproduccion).append(listas.getSelectedItem().toString()).toString());
             if(fichero.delete())
             {
                 JOptionPane.showMessageDialog(null, "Lista Eliminada");
@@ -130,19 +131,19 @@ public class Principal extends JFrame implements BasicPlayerListener, ActionList
             PrintStream DDescritor;
             try
             {
-                DDescritor = new PrintStream((new StringBuilder()).append("Listas/").append(nombre).append(".txt").toString());
+                DDescritor = new PrintStream((new StringBuilder()).append(ruta_listas_de_reproduccion).append(nombre).append(".txt").toString());
             }
             catch(Exception ex) { }
             for(int i = 0; i < Table_Principal.getRowCount(); i++)
             {
                 String linea = Buscandodireccion(i);
-                String original[] = a.traeLineas((new StringBuilder()).append("Listas/").append(nombre).append(".txt").toString());
+                String original[] = a.traeLineas((new StringBuilder()).append(ruta_listas_de_reproduccion).append(nombre).append(".txt").toString());
                 String temp[] = new String[original.length + 1];
                 for(int x = 0; x < original.length; x++)
                     temp[x] = original[x];
 
                 temp[original.length] = linea;
-                a.escribeLineas((new StringBuilder()).append("Listas/").append(nombre).append(".txt").toString(), temp);
+                a.escribeLineas((new StringBuilder()).append(ruta_listas_de_reproduccion).append(nombre).append(".txt").toString(), temp);
                 System.out.println(Buscandodireccion(i));
             }
 
@@ -170,14 +171,14 @@ public class Principal extends JFrame implements BasicPlayerListener, ActionList
         }
         catch(Exception ex) { }
         listas.addItem("Nueva");
-        File directorio = new File("/Listas/");
-       /* File archivos[] = directorio.listFiles();
+        File directorio = new File(ruta_listas_de_reproduccion);
+        File archivos[] = directorio.listFiles();
         for(int x = 0; x < archivos.length; x++)
             listas.addItem(archivos[x].getName());
 
         if(!listas.getSelectedItem().toString().equals("Nueva"))
             nombre = listas.getSelectedItem().toString();
-        */
+        
     }
 
     void refrescar()
@@ -200,7 +201,7 @@ public class Principal extends JFrame implements BasicPlayerListener, ActionList
         String ruta[] = new String[0];
         try
         {
-            rutas = a.traeLineas((new StringBuilder()).append("Listas/").append(listas.getSelectedItem().toString()).toString());
+            rutas = a.traeLineas((new StringBuilder()).append(ruta_listas_de_reproduccion).append(listas.getSelectedItem().toString()).toString());
         }
         catch(Exception e) { }
         int con = 0;
