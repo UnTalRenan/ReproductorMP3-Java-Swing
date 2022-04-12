@@ -307,7 +307,7 @@ public class Principal extends JFrame implements BasicPlayerListener, ActionList
         iniMenuContextual();
         trayIcon = new TrayIcon(icon, "Reproductor mp3 1.0", null);
         setDefaultCloseOperation(3);
-        setSize(900, 600);
+        setSize(900, 620);
         setLocationRelativeTo(null);
         setVisible(true);
          confiRaiz();
