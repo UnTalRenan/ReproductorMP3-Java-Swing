@@ -172,6 +172,10 @@ public class Principal extends JFrame implements BasicPlayerListener, ActionList
         catch(Exception ex) { }
         listas.addItem("Nueva");
         File directorio = new File(ruta_listas_de_reproduccion);
+        
+        if (!directorio.exists()) 
+            directorio.mkdirs(); 
+                
         File archivos[] = directorio.listFiles();
         for(int x = 0; x < archivos.length; x++)
             listas.addItem(archivos[x].getName());
